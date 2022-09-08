@@ -7,6 +7,7 @@ function loadModel($modelName)
 
 function loadView($viewName, $params = array())
 {
+
     if (count($params) > 0) {
         foreach ($params as $key => $value) {
             if (strlen($key) > 0) {
@@ -20,6 +21,7 @@ function loadView($viewName, $params = array())
 
 function loadTemplateView($viewName, $params = array())
 {
+
     if (count($params) > 0) {
         foreach ($params as $key => $value) {
             if (strlen($key) > 0) {
@@ -27,6 +29,12 @@ function loadTemplateView($viewName, $params = array())
             }
         }
     }
+
+    $user = $_SESSION['user'];
+    $workingHours = WorkingHours::loadFromUserAndDate($user->id, date('Y-m-d'));
+    $workedInterval = $workingHours->getWorkedInterval()->format('%H:%I:%S');
+    $exitTime = $workingHours->getExitTime()->format('H:i:s');
+    $activeClock = $workingHours->getActiveClock();
 
     require_once(TEMPLATE_PATH . "/header.php");
     require_once(TEMPLATE_PATH . "/left.php");

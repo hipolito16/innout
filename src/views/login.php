@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="assets/css/login.css">
     <title>In N' Out</title>
 </head>
+
 <body>
 <form class="form-login" action="#" method="post">
     <div class="login-card card">
@@ -26,8 +28,7 @@
                 <label for="email">E-mail</label>
                 <input type="email" id="email" name="email"
                        class="form-control <?= $errors['email'] ? 'is-invalid' : '' ?>"
-                       value="<?= $email ?>"
-                       placeholder="Informe o e-mail" autofocus>
+                       value="<?= isset($email) ? $email : '' ?>" placeholder="Informe o e-mail" autofocus>
                 <div class="invalid-feedback">
                     <?= $errors['email'] ?>
                 </div>
@@ -48,4 +49,5 @@
     </div>
 </form>
 </body>
+
 </html>
